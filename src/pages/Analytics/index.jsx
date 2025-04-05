@@ -219,7 +219,7 @@ const Analytics = () => {
                   </ResponsiveContainer>
                 </div>
 
-                <div className="w-full md:w-[30%] mt-[136px] md:mt-0 flex flex-col md:ml-[32px] border border-[#1D1D1D] rounded-[8px]">
+                <div className="w-full md:w-[30%] mt-[136px] md:mt-0 flex flex-col md:ml-[32px] rounded-[8px]">
                   <div className="flex items-center justify-between w-full">
                     <div className="text-[20px] font-[700] w-[80%]">
                       Insights
@@ -286,7 +286,7 @@ const Analytics = () => {
                         style={{ height: "250px", width: "100%" }}
                         />*/}
                     <img src={WorldMap} alt="" />
-                    <div className="flex justify-between md:w-[50%] w-full border border-[#000000] py-[5px] px-[13px] rounded-[20px]">
+                    <div className="flex justify-between md:w-[50%] w-full md:border border-[#000000] py-[5px] px-[13px] md:rounded-[20px]">
                       {DemographicData?.map((i) => {
                         return (
                           <div className="flex items-center gap-1">

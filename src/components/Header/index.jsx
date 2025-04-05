@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import { AppContext } from "../../context";
 import ThreeDot from "../../assets/images/three-dot.svg";
 import Logo from "../../assets/images/logo-transparent.svg";
@@ -7,10 +7,25 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   const { appState } = useContext(AppContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const navigate = useNavigate();
 
+  const menuRef = useRef(null);
+
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+
+  // Close menu on outside click
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -34,7 +49,7 @@ const Header = () => {
         <div className="w-full text-white flex justify-between items-center py-[10px] px-[10px] relative">
           <div className="w-[30px] h-[30px] bg-white rounded-full" />
           <img src={Logo} alt="logo" />
-          <div className="relative">
+          <div className="relative" ref={menuRef}>
             <img
               src={ThreeDot}
               alt="three-dot-menu"
@@ -44,7 +59,7 @@ const Header = () => {
 
             {/* Dropdown Menu */}
             {isMenuOpen && (
-              <div className="absolute right-0 mt-2 w-[120px] bg-black text-white rounded-md shadow-lg border border-white z-50">
+              <div className="absolute right-0 mt-2 w-[120px] bg-black text-white rounded-md shadow-lg border border-white z-50 select-none">
                 <div className="py-2 px-4 text-[16px] font-[600] cursor-pointer hover:opacity-80">
                   Activity
                 </div>
