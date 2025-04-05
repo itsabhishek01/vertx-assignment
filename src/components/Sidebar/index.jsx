@@ -6,6 +6,7 @@ import DashCards from "../../assets/images/dash-cards.svg";
 import Earth from "../../assets/images/earth.svg";
 import Monitoring from "../../assets/images/monitoring.svg";
 import Bell from "../../assets/images/bell.svg";
+import User from "../../assets/images/user.svg";
 
 const Sidebar = () => {
   const { appState, setAppState } = useContext(AppContext);
@@ -22,14 +23,17 @@ const Sidebar = () => {
 
   const menuItemsMobile = [
     { image: DashCards, text: "Dashboard" },
-    { image: Analytics, text: "Analytics" },
+    {
+      image: window?.location?.pathname === "/profile" ? Analytics : User,
+      text: window?.location?.pathname === "/profile" ? "Analytics" : "Profile",
+    },
     { image: Earth, text: "Connect" },
     { image: Bell, text: "Activity" },
     { image: Monitoring, text: "Dealroom" },
   ];
 
   const handleSideMenuChange = (item) => {
-    if(["Analytics","Profile"]?.includes(item)){
+    if (["Analytics", "Profile"]?.includes(item)) {
       setAppState((prev) => ({ ...prev, currentPage: item }));
       navigate(item === "Profile" ? `/profile` : `/`);
     }
@@ -58,16 +62,19 @@ const Sidebar = () => {
         </div>
       </div>
       <div className="block md:hidden">
-      <div className="fixed bottom-0 flex bg-black w-full items-center pt-[13px] px-[15px] pb-[10px]">
-        {menuItemsMobile?.map((i) => {
-          return (
-            <div className="flex flex-col justify-center items-center text-white w-[20%]">
-              <img src={i?.image} alt="" className="mb-[2px]"/>
-              <span className="text-[8px] font-[600]">{i?.text}</span>
-            </div>
-          );
-        })}
-      </div>
+        <div className="fixed bottom-0 flex bg-black w-full items-center pt-[13px] px-[15px] pb-[10px]">
+          {menuItemsMobile?.map((i) => {
+            return (
+              <div
+                onClick={() => handleSideMenuChange(i?.text)}
+                className="flex flex-col justify-center items-center text-white w-[20%]"
+              >
+                <img src={i?.image} alt="" className="mb-[2px]" />
+                <span className="text-[8px] font-[600]">{i?.text}</span>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );

@@ -286,7 +286,7 @@ const Analytics = () => {
                         style={{ height: "250px", width: "100%" }}
                         />*/}
                     <img src={WorldMap} alt="" />
-                    <div className="flex justify-between md:w-[50%] w-full md:border border-[#000000] py-[5px] px-[13px] md:rounded-[20px]">
+                    <div className="flex justify-between md:w-[50%] w-full md:border border-[#000000] py-[5px] px-[13px] md:rounded-[20px] mt-[8px] md:mt-0">
                       {DemographicData?.map((i) => {
                         return (
                           <div className="flex items-center gap-1">
