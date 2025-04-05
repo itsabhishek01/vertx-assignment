@@ -12,7 +12,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import Dropdown from "../../components/Dropdown";
-import { mapJsonString } from "../../map";
+// import { mapJsonString } from "../../map";
 import IndiaFlag from "../../assets/images/Flag_of_India.svg.webp";
 import USAFlag from "../../assets/images/Flag_of_the_United_States.svg.png";
 import CanadaFlag from "../../assets/images/Flag_of_Canada.svg.png";
@@ -37,7 +37,7 @@ const data = [
 
 const yTicks = [200, 400, 800, 1200, 1600, 2000]; // Custom Y-axis ticks
 
-const navItems = ["Overview", "Demographies"];
+const navItems = ["Overview", "Report", "Demographies"];
 
 const DemographicData = [
   { country: "INDIA", flag: IndiaFlag, percentage: 40, color: "#4834D4" },
@@ -82,7 +82,7 @@ const Analytics = () => {
       <div className="w-full text-white">
         {/* Header */}
         <div className="flex justify-between items-center px-[30px] py-[12px] font-[600] pt-[47px] md:pt-[20px] md:static md:top-0  sticky top-[51px] bg-black z-40">
-          <div className="flex md:max-w-none w-full justify-between md:justify-normal">
+          <div className="flex md:max-w-none w-full justify-between md:justify-normal md:gap-[40px]">
             {navItems.map((item, index) => (
               <div
                 key={index}
@@ -147,7 +147,7 @@ const Analytics = () => {
                         </div>
                       </div>
                     </div>{" "}
-                    <div className="flex items-end gap-[22px]">
+                    <div className="items-end gap-[22px] md:flex hidden">
                       <div className="mt-[17px]">
                         <div className="text-[32px] font-[800]">3.49K</div>
                       </div>
@@ -180,7 +180,18 @@ const Analytics = () => {
                         }
                         axisLine={false} // REMOVE Y-AXIS LINE
                       />
-                      <Tooltip />
+                      <Tooltip
+                        content={({ payload, label }) => (
+                          <div className="bg-[#222] p-2 rounded text-white">
+                            <p>{label}</p>
+                            {payload?.map((entry, idx) => (
+                              <p key={idx} style={{ color: entry.color }}>
+                                {entry.name}: {entry.value}
+                              </p>
+                            ))}
+                          </div>
+                        )}
+                      />
 
                       {/* First Line - White */}
                       <Line
@@ -203,7 +214,7 @@ const Analytics = () => {
                   </ResponsiveContainer>
                 </div>
 
-                <div className="w-full md:w-[30%] flex md:flex-col ml-[32px] border border-[#1D1D1D] rounded-[8px]">
+                <div className="w-full md:w-[30%] mt-[136px] md:mt-0 flex flex-col md:ml-[32px] border border-[#1D1D1D] rounded-[8px]">
                   <div className="flex items-center justify-between w-full">
                     <div className="text-[20px] font-[700] w-[80%]">
                       Insights
@@ -213,37 +224,39 @@ const Analytics = () => {
                       options={["Visitors", "Daily Active", "Monthly Active"]}
                     />
                   </div>
-                  <div className="flex items-end gap-[22px]">
-                    <div className="mt-[17px]">
-                      <div className="font-[600] text-[16px]">Founders</div>
-                      <div className="text-[32px] font-[800]">7.4K</div>
-                    </div>
-                    <div className="flex flex-col mb-[6px]">
-                      <div className="font-[600] text-[12px] text-[#01754F]">
-                        +000%
+                  <div className="flex w-full justify-between md:flex-col">
+                    <div className="flex items-end gap-[22px]">
+                      <div className="mt-[17px]">
+                        <div className="font-[600] text-[16px]">Founders</div>
+                        <div className="text-[32px] font-[800]">7.4K</div>
                       </div>
-                      <div className="font-[600] text-[12px] text-[#555555]">
-                        (000)
+                      <div className="flex flex-col mb-[6px]">
+                        <div className="font-[600] text-[12px] text-[#01754F]">
+                          +000%
+                        </div>
+                        <div className="font-[600] text-[12px] text-[#555555]">
+                          (000)
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-end gap-[22px]">
+                      <div className="mt-[17px]">
+                        <div className="font-[600] text-[16px]">Investors</div>
+                        <div className="text-[32px] font-[800]">6.09K</div>
+                      </div>
+                      <div className="flex flex-col mb-[6px]">
+                        <div className="font-[600] text-[12px] text-[#01754F]">
+                          +000%
+                        </div>
+                        <div className="font-[600] text-[12px] text-[#555555]">
+                          (000)
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex items-end gap-[22px]">
-                    <div className="mt-[17px]">
-                      <div className="font-[600] text-[16px]">Investors</div>
-                      <div className="text-[32px] font-[800]">6.09K</div>
-                    </div>
-                    <div className="flex flex-col mb-[6px]">
-                      <div className="font-[600] text-[12px] text-[#01754F]">
-                        +000%
-                      </div>
-                      <div className="font-[600] text-[12px] text-[#555555]">
-                        (000)
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="text-[10px] font-[600] flex justify-end mt-[90px]">
+                  <div className="text-[10px] font-[600] flex justify-end mt-[26px] md:mt-[90px]">
                     View detailed insights
                   </div>
                 </div>
@@ -252,8 +265,8 @@ const Analytics = () => {
               <div className="mt-[34px]">
                 <div className="text-[20px] font-[700]">Demographics</div>
 
-                <div className="flex">
-                  <div className="w-[70%]">
+                <div className="flex md:flex-row flex-col">
+                  <div className="md:w-[70%] w-full">
                     {" "}
                     {/*                   <img
                         src={`data:image/svg+xml;utf8,${encodeURIComponent(
@@ -263,7 +276,7 @@ const Analytics = () => {
                         style={{ height: "250px", width: "100%" }}
                         />*/}
                     <img src={WorldMap} alt="" />
-                    <div className="flex justify-between w-[50%] border border-[#000000] py-[5px] px-[13px] rounded-[20px]">
+                    <div className="flex justify-between md:w-[50%] w-full border border-[#000000] py-[5px] px-[13px] rounded-[20px]">
                       {DemographicData?.map((i) => {
                         return (
                           <div className="flex items-center gap-1">
@@ -275,13 +288,15 @@ const Analytics = () => {
                                 borderRadius: "100%",
                               }}
                             />
-                            <div>{i?.country}</div>
+                            <div className="text-[12px] md:text-[16px]">
+                              {i?.country}
+                            </div>
                           </div>
                         );
                       })}
                     </div>
                   </div>
-                  <div className="w-[30%] bg-black rounded-lg">
+                  <div className="md:w-[30%] w-full bg-black rounded-lg mt-[16px] md:mt-0">
                     {DemographicData.map((c, index) => (
                       <div key={index} className="flex items-center mb-3">
                         {/* Flag */}
@@ -315,7 +330,7 @@ const Analytics = () => {
                         </div>
                       </div>
                     ))}
-                    <div className="text-[10px] font-[600] flex justify-end mt-[90px]">
+                    <div className="text-[10px] font-[600] flex justify-end md:mt-[90px] mt-[26px]">
                       View all countries
                     </div>
                   </div>

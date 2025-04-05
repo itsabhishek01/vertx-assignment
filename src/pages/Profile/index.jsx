@@ -40,7 +40,7 @@ const Profile = () => {
       <div className="w-full text-white">
         {/* Header */}
         <div className="flex justify-between items-center px-[30px] py-[12px] font-[600] pt-[47px] md:pt-[20px] md:static md:top-0  sticky top-[51px] bg-black z-40">
-          <div className="flex md:max-w-none w-full justify-between md:justify-normal">
+          <div className="flex md:max-w-none w-full justify-between md:justify-normal md:gap-[40px]">
             {navItems.map((item, index) => (
               <div
                 key={index}

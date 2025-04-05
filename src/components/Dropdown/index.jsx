@@ -29,7 +29,7 @@ const Dropdown = ({ options, label }) => {
   }, []);
 
   return (
-    <div ref={dropdownRef} className="relative min-w-[120px] z-50 bg-black">
+    <div ref={dropdownRef} className="relative min-w-[120px] z-30 bg-black">
       {/* Dropdown Button */}
       <div
         className="text-white flex items-center justify-between cursor-pointer p-2 rounded-md"
