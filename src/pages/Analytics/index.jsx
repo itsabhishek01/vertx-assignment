@@ -133,7 +133,7 @@ const Analytics = () => {
                     />
                   </div>
 
-                  <div className="flex mb-[36px]">
+                  <div className="flex mb-[36px] md:gap-5">
                     <div className="flex items-end gap-[22px]">
                       <div className="mt-[17px]">
                         <div className="text-[32px] font-[800]">13.49K</div>
