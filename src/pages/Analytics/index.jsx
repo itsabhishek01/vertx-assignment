@@ -131,6 +131,14 @@ const Analytics = () => {
                         "Last 30 days",
                       ]}
                     />
+                    <Dropdown
+                      label="Connections"
+                      options={[
+                        "Connections",
+                        "Interactions",
+                        "Impressions",
+                      ]}
+                    />
                   </div>
 
                   <div className="flex mb-[36px] md:gap-5">

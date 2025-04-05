@@ -37,7 +37,6 @@
   }
 }
 
-
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -66,13 +65,18 @@
   scrollbar-color: #e5e5e5 transparent;
 }
 
-
-@media screen and (min-width:320px) and (max-width:1024px) {
-  .recharts-responsive-container{
+@media screen and (min-width: 320px) and (max-width: 1024px) {
+  .recharts-responsive-container {
     margin-left: -26px;
+  }
+
+  .recharts-cartesian-axis-ticks .recharts-cartesian-axis-tick:nth-child(2),
+  .recharts-cartesian-axis-ticks .recharts-cartesian-axis-tick:nth-child(4),
+  .recharts-cartesian-axis-ticks .recharts-cartesian-axis-tick:nth-child(6) {
+    display: none;
   }
 }
 
-.recharts-responsive-container{
+.recharts-responsive-container {
   margin-left: -36px;
 }
