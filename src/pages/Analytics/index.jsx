@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Layout from "../../components/Layout";
 // import DottedMap, { createMap } from "dotted-map";
 import WorldMap from "../../assets/images/world-map.png";
+import Arrow from "../../assets/images/arrow.png";
 
 import {
   LineChart,
@@ -133,11 +134,7 @@ const Analytics = () => {
                     />
                     <Dropdown
                       label="Connections"
-                      options={[
-                        "Connections",
-                        "Interactions",
-                        "Impressions",
-                      ]}
+                      options={["Connections", "Interactions", "Impressions"]}
                     />
                   </div>
 
@@ -264,8 +261,13 @@ const Analytics = () => {
                     </div>
                   </div>
 
-                  <div className="text-[10px] font-[600] flex justify-end mt-[26px] md:mt-[90px]">
-                    View detailed insights
+                  <div className="text-[10px] font-[600] flex justify-end items-center mt-[26px] md:mt-[90px]">
+                    <span>View detailed insights</span>
+                    <img
+                      src={Arrow}
+                      alt=""
+                      className="w-[10px] h-[10px] ml-2"
+                    />
                   </div>
                 </div>
               </div>
@@ -338,8 +340,13 @@ const Analytics = () => {
                         </div>
                       </div>
                     ))}
-                    <div className="text-[10px] font-[600] flex justify-end md:mt-[90px] mt-[26px]">
-                      View all countries
+                    <div className="text-[10px] font-[600] flex justify-end items-center md:mt-[90px] mt-[26px]">
+                      <span>View all countries</span>
+                      <img
+                        src={Arrow}
+                        alt=""
+                        className="w-[10px] h-[10px] ml-2"
+                      />
                     </div>
                   </div>
                 </div>

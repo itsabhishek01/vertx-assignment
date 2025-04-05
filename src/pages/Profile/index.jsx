@@ -6,6 +6,7 @@ import Linkedin from "../../assets/images/linkedin.svg";
 import X from "../../assets/images/twitter.svg";
 import Gmail from "../../assets/images/gmail.svg";
 import Logo from "../../assets/images/logo_only.svg";
+import Verified from "../../assets/images/verified_badge.svg";
 
 const foundedCompanies = [
   {
@@ -71,17 +72,22 @@ const Profile = () => {
                   <img src={DP} alt="Profile" />
                 </div>
                 <div className="flex md:block md:ml-[33px] w-full justify-between md:justify-normal">
-                  <div>
-                    <div className="text-[24px] font-[700]">Mr A</div>
-                    <div className="flex items-center mt-[2.25px]">
-                      <span className="mr-1 text-[12px] md:text-[16px]">
-                        {" "}
-                        Co-Founder & CEO @Vertx
-                      </span>
-                      <img src={smallLogo} alt="Company Logo" />
+                  <div className="flex">
+                    <div>
+                      <div className="text-[24px] font-[700]">Mr A</div>
+                      <div className="flex items-center mt-[2.25px]">
+                        <span className="mr-1 text-[12px] md:text-[16px]">
+                          {" "}
+                          Co-Founder & CEO @Vertx
+                        </span>
+                        <img src={smallLogo} alt="Company Logo" />
+                      </div>
+                      <div className="bg-white text-black font-[500] text-[8px] px-[4.39px] py-[2.98px] rounded-[2px] w-[62.4px] my-[8.12px] md:mt-[13.12px]">
+                        Entrepreneur
+                      </div>
                     </div>
-                    <div className="bg-white text-black font-[500] text-[8px] px-[4.39px] py-[2.98px] rounded-[2px] w-[62.4px] my-[8.12px] md:mt-[13.12px]">
-                      Entrepreneur
+                    <div>
+                      <img src={Verified} alt="" />
                     </div>
                   </div>
                   <div className="flex md:mt-[32.11px] gap-[8.19px] items-end md:items-normal">

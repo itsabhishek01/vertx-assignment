@@ -29,8 +29,10 @@ const Sidebar = () => {
   ];
 
   const handleSideMenuChange = (item) => {
-    setAppState((prev) => ({ ...prev, currentPage: item }));
-    navigate(item === "Profile" ? `/profile` : `/`);
+    if(["Analytics","Profile"]?.includes(item)){
+      setAppState((prev) => ({ ...prev, currentPage: item }));
+      navigate(item === "Profile" ? `/profile` : `/`);
+    }
   };
 
   return (
