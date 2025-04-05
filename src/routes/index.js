@@ -1,11 +1,15 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import Analytics from '../pages/Analytics';
 import Profile from '../pages/Profile';
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
+    element: <Navigate to="/analytics" replace />,
+  },
+  {
+    path: "/analytics",
     element: <Analytics />,
   },
   {

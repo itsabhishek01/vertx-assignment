@@ -2,10 +2,13 @@ import React, { useContext, useState } from "react";
 import { AppContext } from "../../context";
 import ThreeDot from "../../assets/images/three-dot.svg";
 import Logo from "../../assets/images/logo-transparent.svg";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const { appState } = useContext(AppContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
@@ -41,9 +44,23 @@ const Header = () => {
 
             {/* Dropdown Menu */}
             {isMenuOpen && (
-              <div className="absolute right-0 mt-2 w-[96px] bg-black text-white rounded-md shadow-lg border border-white z-50">
+              <div className="absolute right-0 mt-2 w-[120px] bg-black text-white rounded-md shadow-lg border border-white z-50">
                 <div className="py-2 px-4 text-[16px] font-[600] cursor-pointer hover:opacity-80">
                   Activity
+                </div>
+                <div
+                  className="py-2 px-4 text-[16px] font-[600] cursor-pointer hover:opacity-80"
+                  onClick={() =>
+                    navigate(
+                      window?.location?.pathname === "/profile"
+                        ? "/analytics"
+                        : "/profile"
+                    )
+                  }
+                >
+                  {window?.location?.pathname === "/profile"
+                    ? "Analytics"
+                    : "Profile"}
                 </div>
                 <div className="py-2 px-4 text-[16px] font-[600] cursor-pointer hover:opacity-80">
                   Log out
